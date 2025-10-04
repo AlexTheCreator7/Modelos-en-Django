@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Bienvenido al Sistema POS</h2>
+<p>Sistema para gestión de ventas e inventario.</p>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h3>Artículos</h3>
+                <h2>{{ total_articulos|default:"0" }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Artículos{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <h2>Listado de Artículos</h2>
+    <a href="{% url 'articulo_create' %}" class="btn btn-primary">
+        Nuevo Artículo
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Grupo</th>
+                    <th>Línea</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for articulo in articulos %}
+                <tr>
+                    <td>{{ articulo.codigo_articulo }}</td>
+                    <td>{{ articulo.descripcion }}</td>
+                    <td>{{ articulo.grupo.nombre_grupo }}</td>
+                    <td>{{ articulo.linea.nombre_linea }}</td>
+                    <td>{{ articulo.stock }}</td>
+                    <td>
+                        <a href="{% url 'articulo_detail' articulo.articulo_id %}" class="btn btn-sm btn-info">Ver</a>
+                        <a href="{% url 'articulo_edit' articulo.articulo_id %}" class="btn btn-sm btn-warning">Editar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">No hay artículos</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

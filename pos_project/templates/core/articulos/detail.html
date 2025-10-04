@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ articulo.descripcion }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <h2>Detalle de Artículo</h2>
+    <div>
+        <a href="{% url 'articulos_list' %}" class="btn btn-secondary">Volver</a>
+        <a href="{% url 'articulo_edit' articulo.articulo_id %}" class="btn btn-warning">Editar</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4>{{ articulo.descripcion }}</h4>
+        <hr>
+        <p><strong>Código:</strong> {{ articulo.codigo_articulo }}</p>
+        <p><strong>Grupo:</strong> {{ articulo.grupo.nombre_grupo }}</p>
+        <p><strong>Línea:</strong> {{ articulo.linea.nombre_linea }}</p>
+        <p><strong>Stock:</strong> {{ articulo.stock }}</p>
+        <p><strong>Presentación:</strong> {{ articulo.presentacion|default:"No especificado" }}</p>
+    </div>
+</div>
+{% endblock %}
